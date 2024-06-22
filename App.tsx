@@ -3,10 +3,16 @@ import GoalInput from "./components/GoalInput";
 import GoalItem from "./components/GoalItem";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
+import React from "react";
 
-export default function App() {
-  const [modalIsVisible, setModalIsVisible] = useState(false);
-  const [courseGoals, setCourseGoals] = useState([]);
+interface Goal {
+  id: string;
+  text: string;
+}
+
+ const App:React.FC=()=>{
+  const [modalIsVisible, setModalIsVisible] = useState<boolean>(false);
+  const [courseGoals, setCourseGoals] = useState<Goal[]>([]);
 
   const startAddGoalHandler = () => {
     setModalIsVisible(true);
@@ -16,17 +22,17 @@ export default function App() {
     setModalIsVisible(false);
   };
 
-  const addGoalHandler = (enteredGoalText) => {
-    setCourseGoals((currentCourseGoals) => [
+  const addGoalHandler = (enteredGoalText:string) => {
+    setCourseGoals((currentCourseGoals:Goal[]) => [
       ...currentCourseGoals,
       { id: Math.random().toString(), text: enteredGoalText },
     ]);
     cancelAddGoalHandler();
   };
 
-  const deleteGoalHandler = (goalId) => {
-    setCourseGoals((currentCourseGoals) => {
-      return currentCourseGoals.filter((goal) => goal.id !== goalId);
+  const deleteGoalHandler = (goalId:string) => {
+    setCourseGoals((currentCourseGoals:Goal[]) => {
+      return currentCourseGoals.filter((goal:Goal) => goal.id !== goalId);
     });
   };
 
@@ -74,3 +80,5 @@ const styles = StyleSheet.create({
     flex: 5,
   },
 });
+
+export default App;

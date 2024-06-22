@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Image, Modal, StyleSheet, TextInput, View } from "react-native";
 
-const GoalInput = ({ onAddGoal, visible,onCancel }) => {
-  const [enteredGoalText, setEnteredGoalText] = useState("");
+const GoalInput:React.FC<{onAddGoal:(enteredGoalText:string)=>void;visible:boolean;onCancel:()=>void}> = ({ onAddGoal, visible,onCancel }) => {
+  const [enteredGoalText, setEnteredGoalText] = useState<string>("");
 
-  const goalInputHandler = (enteredGoalText) => {
+  const goalInputHandler = (enteredGoalText:string) => {
     setEnteredGoalText(enteredGoalText);
   };
   const addGoalHandler = () => {
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 8,
     width: "100%",
-    padding: 8,
   },
   buttonContainer: {
     marginTop: 16,

@@ -1,6 +1,7 @@
-import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
-const GoalItem = ({ text, id, onDeleteItem }) => {
+const GoalItem:React.FC<{text:string;id:string;onDeleteItem:(id:string)=>void}> = ({ text, id, onDeleteItem }) => {
   return (
     <View style={styles.goalItem}>
       <Pressable
